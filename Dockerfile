@@ -14,5 +14,5 @@ RUN mvn -B clean package
 
 EXPOSE 8080
 
-CMD ["java", "-jar", "target/test-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "market-app-with-JavaSpring-0.0.1-SNAPSHOT.jar"]
 
