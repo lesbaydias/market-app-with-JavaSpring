@@ -1,0 +1,23 @@
+stages:
+  - build
+  - test
+
+variables:
+  MAVEN_CLI_OPTS: "--batch-mode --errors --fail-at-end --show-version"
+  MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
+
+before_script:
+  - export M2_HOME=/usr/share/maven
+  - export M2=$M2_HOME/bin
+  - export PATH=$M2:$PATH
+
+build:
+  stage: build
+  script:
+    - docker build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME .
+    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME
+
+test:
+  stage: test
+  script:
+    - docker run --network host $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME mvn $MAVEN_CLI_OPTS clean test
