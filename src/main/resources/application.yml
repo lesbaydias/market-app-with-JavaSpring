@@ -4,9 +4,9 @@ jwt:
 
 spring:
   datasource:
-    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:test_db}
-    username: ${DB_USER:testuser}
-    password: ${DB_PASS:testpas}
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:market-app}
+    username: ${DB_USER:username}
+    password: ${DB_PASS:password}
     driver-class-name: ${DRIVER_CLASS_NAME:org.postgresql.Driver}
   jpa:
     properties:
